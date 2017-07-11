@@ -1,0 +1,31 @@
+{
+  "entry": "src/index.js",
+  "disableCSSModules": false,
+  "publicPath": "/bmsWeb/",
+  "theme": {
+    "@primary-color": "#108ee9",
+    "@link-color": "#108ee9",
+    "@border-radius-base": "2px",
+    "@font-size-base": "14px",
+    "@line-height-base": "1.2"
+  },
+  "proxy": {
+    "/data": {
+      "target": "http://192.168.2.99:8087/bms",
+      "changeOrigin": true,
+      "pathRewrite": { "data" : "data" }
+    }
+  },
+  "autoprefixer": null,
+  "extraBabelPlugins": [
+    "transform-runtime",
+    ["import", { "libraryName": "antd", "style": true }]
+  ],
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr"
+      ]
+    }
+  }
+}
