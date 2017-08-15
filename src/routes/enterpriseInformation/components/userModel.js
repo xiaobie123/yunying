@@ -14,56 +14,78 @@ const formItemLayout = {
     span: 14,
   },
 }
-const modal = ({
-  loading,
-  visible,
-  modalType,
-  item = {},
-  onOk,
-  onCancel,
-  form: {
-    getFieldDecorator,
-    validateFields,
-    getFieldsValue,
-  },
-}) => {
-  function handleOk () {
-  	console.log({
-        ...getFieldsValue(),
-        id: item.id,
-      });
-    validateFields((errors) => {
-      if (errors) {
-        return
-      }
-      const data = {
-        ...getFieldsValue(),
-        id: item.id,
-      }
-      debugger;
-      /*修改数据结构*/
-     data.province=data.cityName[0];
-     data.city=data.cityName[1];
-     data.area=data.cityName[2];
-     delete data.cityName;
-      onOk(data)
-    })
-  }
-function onChangeCascader (value) {
-  console.log(value);
-}
-debugger;
-console.log(loading);
-console.log(visible);
-  const modalOpts = {
-    title: modalType=="create" ? "添加企业信息":"更新企业信息",
-    visible:loading===false && visible===true ? true:false,
-    onOk: handleOk,
-    onCancel,
-    wrapClassName: 'vertical-center-modal',
-  }
-  console.log(modalType);
-  return (
+class modal extends React.Component {
+	constructor(props) {
+		debugger;
+	    super(props);
+	    this.state = { visible: false};
+	    this.show = this.show.bind(this);
+	  }
+    /*shouldComponentUpdate(nextProps, nextState) {
+    	if(nextProps.modalType=="edit" && this.props.item.id==nextProps.item.id){
+    		return false;
+    	}
+    	debugger;
+	    return true;
+	  }*/
+	componentWillUnmount() {
+        alert("modal");
+    }
+    show(){
+	this.setState({
+      visible: true,
+    });
+    }
+  render() {
+  	const self=this;
+  	debugger;
+  	let {
+		  loading,
+		  visible,
+		  modalType,
+		  item = {},
+		  onOk,
+		  form: {
+		    getFieldDecorator,
+		    validateFields,
+		    getFieldsValue,
+		  },
+		} = this.props;
+  	function handleOk () {
+	    validateFields((errors) => {
+	      if (errors) {
+	        return
+	      }
+	      const data = {
+	        ...getFieldsValue(),
+	        id: item.id,
+	      }
+	      /*修改数据结构*/
+	     data.province=data.cityName[0];
+	     data.city=data.cityName[1];
+	     data.area=data.cityName[2];
+	     delete data.cityName;
+	      onOk(data)
+	    })
+  	}
+  	function onCancel(){
+		this.setState({
+	      visible: false,
+	    });
+  	}
+	function onChangeCascader (value) {
+	  console.log(value);
+	}
+	console.log(loading);
+	console.log(visible);
+	  const modalOpts = {
+	    title: modalType=="create" ? "添加企业信息":"更新企业信息",
+	    visible:this.state.visible,
+	    onOk: handleOk,
+	    onCancel,
+	    wrapClassName: 'vertical-center-modal',
+	  }
+    return (
     <Modal {...modalOpts} className={styles.modal}>
       <Form layout="horizontal">
       	{/*<Tabs type="card">
@@ -177,8 +199,10 @@ console.log(visible);
         </Tabs>*/}
       </Form>
     </Modal>
-  )
+  );
+  }
 }
+
 
 modal.propTypes = {
   loading: PropTypes.bool,
@@ -190,5 +214,5 @@ modal.propTypes = {
   onOk: PropTypes.func,
   modalType:PropTypes.string,
 }
-
-export default Form.create()(modal)
+let Modal_temp = Form.create()(modal);
+export default Modal_temp;

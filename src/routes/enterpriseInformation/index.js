@@ -20,6 +20,7 @@ var Date={
 		}
   };
 var index_tem=0;
+let Modal_ref=null;
 function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loading }) {
 	const { list, pagination, currentItem, modalVisible, modalType} = enterpriseInformation;
 	debugger;
@@ -39,10 +40,14 @@ function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loa
       console.log(Date);
     },
     add(){
-    	dispatch({
+    	/*dispatch({
         type: 'enterpriseInformation/add',
         payload:{},
-     })
+     });
+
+*/      debugger;
+    UserModal.show();
+      Modal_ref.show();
     },
   }
   const userListProps = {
@@ -133,14 +138,12 @@ function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loa
       })
     },
   }
-  const UserModalGen = () =>
-    <UserModal {...userModalProps} />
   return (
     <div className="content-inner">
 	<div>{index_tem++}</div>
     <UserFilter {...userFilterProps} />
     <UserList {...userListProps}/>
-    <UserModalGen />
+    <UserModal  {...userModalProps} ref={(modal) => { Modal_ref = modal; }} />
     </div>
   )
 }

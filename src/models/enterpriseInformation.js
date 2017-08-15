@@ -94,10 +94,6 @@ export default {
     },
     /*编辑：修改企业详情*/
     *sendeditItem({ payload }, { call, put }){
-    	yield put({
-          	type: 'hideModal',
-          	payload: {},
-      	});
     	const {data} = yield call(update_enterprise, payload.parms)
       if (data && data.success) {
       	const dataQuery = yield call(query, parse(payload.Date));/*修改成功后，立刻再次请求列表数据*/
@@ -112,6 +108,10 @@ export default {
 	            },
 	          },
 	        })
+         /* yield put({
+            type: 'hideModal',
+            payload: {},
+        });*/
       	}
       }
     },
