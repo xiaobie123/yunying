@@ -17,7 +17,7 @@ function list ({ loading, dataSource, pagination, onPageChange,onSwitch,onSendMa
 			}
 		},
 	}
-  
+
   const columns = [
     {
       title: '企业名称',
@@ -63,13 +63,13 @@ function list ({ loading, dataSource, pagination, onPageChange,onSwitch,onSendMa
       	 }
         return <Switch defaultChecked={state} onChange={onChange_switch} checkedChildren={'开通'} unCheckedChildren={'禁用'} />
       },
-      
+
     },{
       title: '操作',
       key: 'operation',
       render: (text, record) => {
-      	
-        return <span>
+
+        return( <span>
         <Tooltip title="编辑">
 	        <a onClick={(e)=>{
 	        	e.preventDefault();
@@ -83,9 +83,9 @@ function list ({ loading, dataSource, pagination, onPageChange,onSwitch,onSendMa
         }} style={{ marginLeft:20}}>
         <Icon type="mail" style={{ fontSize: 16, color: '#08c' }} /></a>
         </Tooltip>
-        </span>
+        </span>)
       },
-    }, 
+    },
   ]
   return (
     <div>

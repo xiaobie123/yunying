@@ -50,17 +50,16 @@ function RouterConfig({ history, app }) {
               cb(null, require('./routes/enterpriseInformation/'))
             },'dashboard-enterpriseInformation')
           },
+        },{
+          path: '/dashboard/datatest1',
+          name: '/dashboard/datatest1',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/test/datatest1'))
+            },'datatest1')
+          },
         }
         ]
-    },
-    {
-      path: '/users',
-      name: 'UsersPage',
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./routes/IndexPage'));
-        });
-      },
     },
   ];
 

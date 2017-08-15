@@ -2,7 +2,7 @@ import { request } from '../utils'
 
 /*企业信息查询*/
 export async function query (params) {
-  return request('/data/bms/enterprise/query', {
+  return request('data/bms/enterprise/query', {
     method: 'post',
     headers: {
     'Content-Type': 'application/json',

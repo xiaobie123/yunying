@@ -19,6 +19,7 @@ var Date={
 			pageSize:10
 		}
   };
+var index_tem=0;
 function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loading }) {
 	const { list, pagination, currentItem, modalVisible, modalType} = enterpriseInformation;
 	debugger;
@@ -109,6 +110,7 @@ function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loa
     item: currentItem,
     visible: modalVisible,
     modalType,
+    loading,
     onOk (data) {
     	debugger;
     	if(modalType=="create"){
@@ -122,7 +124,7 @@ function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loa
 	        payload:{parms:data,Date:Date}
 	     })
     	}
-    	
+
     },
     onCancel () {
     	debugger;
@@ -135,6 +137,7 @@ function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loa
     <UserModal {...userModalProps} />
   return (
     <div className="content-inner">
+	<div>{index_tem++}</div>
     <UserFilter {...userFilterProps} />
     <UserList {...userListProps}/>
     <UserModalGen />

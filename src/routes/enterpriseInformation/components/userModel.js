@@ -15,6 +15,7 @@ const formItemLayout = {
   },
 }
 const modal = ({
+  loading,
   visible,
   modalType,
   item = {},
@@ -51,9 +52,12 @@ const modal = ({
 function onChangeCascader (value) {
   console.log(value);
 }
+debugger;
+console.log(loading);
+console.log(visible);
   const modalOpts = {
     title: modalType=="create" ? "添加企业信息":"更新企业信息",
-    visible,
+    visible:loading===false && visible===true ? true:false,
     onOk: handleOk,
     onCancel,
     wrapClassName: 'vertical-center-modal',
@@ -97,7 +101,7 @@ function onChangeCascader (value) {
 	            ],
 	          })(<Input placeholder="请输入企业编码" />)}
 	        </FormItem>
-	        
+
 	        {/*</TabPane>
 	        <TabPane tab="联系人信息" key="2">*/}
 	        <FormItem label="联系人名称：" hasFeedback  {...formItemLayout}>
@@ -177,6 +181,7 @@ function onChangeCascader (value) {
 }
 
 modal.propTypes = {
+  loading: PropTypes.bool,
   form: PropTypes.object.isRequired,
   visible: PropTypes.bool,
   type: PropTypes.string,

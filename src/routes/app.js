@@ -5,10 +5,18 @@ import { Layout } from '../components'
 import { Spin } from 'antd'
 import { classnames, config } from '../utils'
 import { Helmet } from 'react-helmet'
+import Animate from 'rc-animate'
+import QueueAnim from 'rc-queue-anim'
 import '../components/skin.less'
 
-const { Header, Bread, Footer, Sider, styles } = Layout
-
+const { Header, Bread, Footer, Sider, styles } = Layout;
+const AnimateWap = (props) => {//入场动画包裹层
+   const Key=Math.round(Math.random()*9+1);
+  return(<QueueAnim type={['right', 'left']} className="router-wrap">
+          <div className="fd"  key={Key}>{props.children}</div>
+        </QueueAnim>);
+};
+debugger;
 const App = ({ children, location, dispatch, app, loading }) => {
   const { login, loginButtonLoading, user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys } = app
   const loginProps = {

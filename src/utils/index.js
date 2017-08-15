@@ -4,6 +4,7 @@ import request from './request'
 import classnames from 'classnames'
 import { color } from './theme'
 
+console.log(window);
 // 连字符转驼峰
 String.prototype.hyphenToHump = function () {
   return this.replace(/-(\w)/g, (...args) => {

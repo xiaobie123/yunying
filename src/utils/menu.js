@@ -14,6 +14,9 @@ module.exports = [
       },{
         key: 'enterpriseInformation',
         name: '企业信息',
+      },{
+        key: 'datatest1',
+        name: '大数据量表格测试',
       }
     ],
   }/*,

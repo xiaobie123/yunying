@@ -4,6 +4,7 @@ import { Row, Col, Card } from 'antd'
 import UserFilter from './components/UserFilter'
 import UserList from './components/userList'
 import UserModal from './components/userModel'
+let ssss=1;
 const bodyStyle = {
   bodyStyle: {
     height: 432,
@@ -86,6 +87,7 @@ function VichainUserManage ({ location, dispatch, vichainUserManage, loading }) 
   }
   return (
     <div className="content-inner">
+	<div>{ssss++}</div>
     <UserFilter {...userFilterProps} />
     <UserList {...userListProps}/>
     </div>
