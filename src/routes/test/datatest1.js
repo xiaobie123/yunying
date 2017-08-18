@@ -3,6 +3,12 @@ import { connect } from 'dva'
 import { Row, Col, Card, Table } from 'antd'
 
 class  Datatest1 extends React.Component {
+	constructor(props) {
+    super(props);
+  }
+	componentDidMount(){
+		NProgress.done();
+	}
   render() {
     /**const columns = [
       { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },

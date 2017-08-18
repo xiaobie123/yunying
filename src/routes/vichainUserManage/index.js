@@ -20,6 +20,7 @@ var Date={
 		}
   };
 function VichainUserManage ({ location, dispatch, vichainUserManage, loading }) {
+	NProgress.done();
 	const { list, pagination} = vichainUserManage
 	console.log(vichainUserManage);
   const userFilterProps = {

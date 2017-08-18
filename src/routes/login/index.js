@@ -13,6 +13,7 @@ const login = ({
     validateFieldsAndScroll,
   },
 }) => {
+	NProgress.done();
   function handleOk () {
     validateFieldsAndScroll((errors, values) => {
       if (errors) {

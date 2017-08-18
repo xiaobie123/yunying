@@ -26,6 +26,7 @@ const getMenus = function (menuArray, siderFold, parentPath = '/') {
 }
 
 function Menus ({ siderFold, darkTheme, location, handleClickNavMenu, navOpenKeys, changeOpenKeys }) {
+  debugger;
   const menuItems = getMenus(menu, siderFold)
 
   const getAncestorKeys = (key) => {

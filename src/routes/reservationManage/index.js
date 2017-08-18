@@ -20,6 +20,7 @@ var Date={
 		}
   };
 function ReservationManage ({ location, dispatch, reservationManage, loading }) {
+	NProgress.done();
 	const { list, pagination, currentItem, modalVisible, modalType} = reservationManage
 	console.log(reservationManage);
   const userFilterProps = {

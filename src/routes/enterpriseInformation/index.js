@@ -22,6 +22,7 @@ var Date={
 var index_tem=0;
 let Modal_ref=null;
 function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loading }) {
+	NProgress.done();
 	const { list, pagination, currentItem, modalVisible, modalType} = enterpriseInformation;
 	debugger;
 	console.log(enterpriseInformation);
@@ -46,8 +47,8 @@ function EnterpriseInformation ({ location, dispatch, enterpriseInformation, loa
      });
 
 */      debugger;
-    UserModal.show();
-      Modal_ref.show();
+    //UserModal.show();
+      Modal_ref.refs.wrappedComponent.refs.formWrappedComponent.show();
     },
   }
   const userListProps = {

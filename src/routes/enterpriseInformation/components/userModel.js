@@ -29,7 +29,6 @@ class modal extends React.Component {
 	    return true;
 	  }*/
 	componentWillUnmount() {
-        alert("modal");
     }
     show(){
 	this.setState({
@@ -37,6 +36,7 @@ class modal extends React.Component {
     });
     }
   render() {
+	console.log(1);
   	const self=this;
   	debugger;
   	let {
@@ -69,22 +69,20 @@ class modal extends React.Component {
 	    })
   	}
   	function onCancel(){
-		this.setState({
+		self.setState({
 	      visible: false,
 	    });
   	}
 	function onChangeCascader (value) {
 	  console.log(value);
 	}
-	console.log(loading);
-	console.log(visible);
-	  const modalOpts = {
-	    title: modalType=="create" ? "添加企业信息":"更新企业信息",
-	    visible:this.state.visible,
-	    onOk: handleOk,
-	    onCancel,
-	    wrapClassName: 'vertical-center-modal',
-	  }
+  const modalOpts = {
+    title: modalType=="create" ? "添加企业信息":"更新企业信息",
+    visible:this.state.visible,
+    onOk: handleOk,
+    onCancel:onCancel,
+    wrapClassName: 'vertical-center-modal',
+  }
     return (
     <Modal {...modalOpts} className={styles.modal}>
       <Form layout="horizontal">
@@ -214,5 +212,5 @@ modal.propTypes = {
   onOk: PropTypes.func,
   modalType:PropTypes.string,
 }
-let Modal_temp = Form.create()(modal);
+let Modal_temp = Form.create({withRef:true})(modal);
 export default Modal_temp;

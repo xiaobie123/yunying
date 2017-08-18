@@ -19,10 +19,14 @@ export default {
     navOpenKeys: JSON.parse(localStorage.getItem('navOpenKeys') || '[]'),
   },
   subscriptions: {
-    setup ({ dispatch }) {
+    setup ({ dispatch,history }) {
       window.onresize = () => {
         dispatch({ type: 'changeNavbar' })
       }
+      history.listen(location => {
+        debugger;
+        NProgress.start();
+      })
     },
   },
   effects: {
